@@ -2,28 +2,31 @@
 
 const display = document.getElementById("numbers");
 
-// function logNumbers(){
-//     setTimeout(()=>{ //Non Blocking Approach
-//         for(let i=1; i<=5; i++){
-//             display.textContent += i + " ";
-//             console.log(i);
-//         }
-//     },4000);
-// }
-
-function logNumbers() {
-    const start = Date.now();
-    const end = start + 4000;
-
-    for (let i = 0; true; i++) { //blocking approach
-        if (Date.now() >= end) {
-            break;
-        }
+function logNumbers(i=1){
+    if(i>5){
+        return;
     }
+    console.log(i);
+    display.textContent += i + " ";
 
-    for (let i = 1; i <= 5; i++) {
-        display.textContent += i + " ";
-    }
-
-
+    setTimeout(()=>{
+        logNumbers(i+1);
+    },0);
 }
+
+// function logNumbers() {
+//     const start = Date.now();
+//     const end = start + 4000;
+
+//     for (let i = 0; true; i++) { //blocking approach
+//         if (Date.now() >= end) {
+//             break;
+//         }
+//     }
+
+//     for (let i = 1; i <= 5; i++) {
+//         display.textContent += i + " ";
+//     }
+
+
+// }
