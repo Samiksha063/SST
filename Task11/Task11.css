@@ -1,0 +1,19 @@
+#box1,#box2{
+    width: 70px;
+    height: 70px;
+    background-color:chocolate;
+    position: absolute;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#box2{
+    background-color:green;
+    top: 100px;
+}
+
+#box1{
+    background-color:blue;
+}
