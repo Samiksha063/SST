@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete and Clear</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 200px;
+            margin-top: 50px;
+            gap: 10px;
+        }
+
+        #nameBox, #addressBox{
+            display: flex;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div id="nameBox">
+            <input type="text" id="name" placeholder="Enter your name">
+            <button id="storeName">Store name</button>
+            <button id="removeName">Remove Name</button>
+        </div>
+
+        <div id="addressBox">
+        <input type="text" id="address" placeholder="Enter you address">
+        <button id="storeAddress">Store Address</button>
+        <button id="removeAddress">Remove Address</button>
+        </div>
+
+        <button id="clearData">Clear Data</button>
+
+        <p id="output"></p>
+    </div>
+    <script src="./Task1.3.js"></script>
+</body>
+</html>

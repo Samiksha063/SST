@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indexed Database</title>
+</head>
+<body>
+    <script>
+        // Create a Simple Database
+
+        //asking browser to open or create database
+        const request = indexedDB.open("StudentDB", 1);
+
+        //runs only when database is created for the first time
+        request.onupgradeneeded = function(event){
+            const db = event.target.result;
+
+            //create a table(object store)
+            db.createObjectStore("students",{
+                keyPath : "id"
+            });
+
+            console.log("Database and table created");
+        }
+
+        //runs when database is ready to use
+        request.onsuccess = function(event){
+            console.log("Database opened successfully");
+
+            //Add data
+            const db = event.target.result;
+
+            //Create transaction
+            const transaction = db.transaction("students", "readwrite");
+
+            //Get object store
+            const store = transaction.objectStore("students");
+
+            //Add data
+            store.put({
+                id: 1,
+                name: "Samiksha",
+                age: 20
+            });
+
+            store.put({
+                id: 2,
+                name: "Samridhdi",
+                age: 15
+            });
+            console.log("Data added");
+
+            //read a single student
+            const getRequest = store.get(1);
+            getRequest.onsuccess = function(){
+                console.log("Student with id 2: " , getRequest.result);
+            }
+
+            //read all students
+            const getAllRequest = store.getAll();
+            getAllRequest.onsuccess = function(){
+                console.log("All students: " , getAllRequest.result);
+            }
+        }
+
+        //runs if failed
+        request.onerror = function(){
+            console.log("Error opening database");
+        }
+    </script>
+    
+</body>
+</html>
